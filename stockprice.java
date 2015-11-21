@@ -31,14 +31,14 @@ public class StockPrice {
 
 			public void reduce(Text key, Iterable<IntWritable> values,Context context) throws IOException, InterruptedException {
 
-			int maxValue = Integer.MIN_VALUE;
+				int maxValue = Integer.MIN_VALUE;
 
-			//Looping and calculating Max for each year
-			for (IntWritable val : values) {
+				//Looping and calculating Max for each year
+				for (IntWritable val : values) {
 				maxValue = Math.max(maxValue, val.get());
 				}
 
-			context.write(key, new IntWritable(maxValue));
+				context.write(key, new IntWritable(maxValue));
 			}
 		}
 
